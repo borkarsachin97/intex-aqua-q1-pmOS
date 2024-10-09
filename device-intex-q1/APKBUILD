@@ -1,0 +1,32 @@
+# Reference: <https://postmarketos.org/devicepkg>
+pkgname=device-intex-q1
+pkgdesc="Intex Aqua Q1"
+pkgver=0.1
+pkgrel=0
+url="https://postmarketos.org"
+license="MIT"
+arch="armv7"
+options="!check !archcheck"
+depends="
+	linux-intex-q1
+	mesa-dri-gallium
+	mkbootimg
+	postmarketos-base
+"
+makedepends="devicepkg-dev"
+source="deviceinfo
+	initfs-hook.sh
+	"
+
+build() {
+	devicepkg_build $startdir $pkgname
+}
+
+package() {
+	devicepkg_package $startdir $pkgname
+}
+
+sha512sums="
+18783bdb72f83ab10f8bdeb08e24ca18bd31b4ca130612f43246aa49a31cce7c554b29461c81f785e71fb2b06b8634beda0e43d09ecc5869ace3e51886787c5c  deviceinfo
+235a4bc91e02bbaebb7a39ec6ca11da577ed19ca4723d34061ff7577e9413cb3da8886463dbd64886432882e1685c125f5089d7449e5658e15f76b0340415810  initfs-hook.sh
+"
